@@ -1,0 +1,22 @@
+.vehicle-img{
+    height: 200px; 
+    object-fit: cover; 
+}
+
+.card:hover img {
+    transform:scale(1.2, 1.2);
+    transition-duration: 300ms;
+    transition-timing-function: ease-out;
+    opacity: 0.7;
+}
+
+.card img {
+    transform:scale(1, 1);
+    transition-duration: 300ms;
+    transition-timing-function: ease-out;
+    opacity: 1;
+}
+
+.card-img-wrapper {
+    overflow: hidden;
+}
