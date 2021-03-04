@@ -16,9 +16,10 @@ export class VehicleDetailComponent implements OnInit {
 
   constructor(private vehicleService: VehiclesService, private route: ActivatedRoute) { }
 
+ 
+
   ngOnInit(): void {
     this.loadMember();
-
     this.galleryOptions = [
       {
         width: '500px',
@@ -29,7 +30,7 @@ export class VehicleDetailComponent implements OnInit {
         preview: false
       }
     ]
-
+    
   }
 
   getImages(): NgxGalleryImage[] {
@@ -37,8 +38,9 @@ export class VehicleDetailComponent implements OnInit {
     let flag = true;
     let j = 1;
 
-    while (flag) {
+    while (flag) { //for some vehicles this loop never ends
       let imageUrl = "";
+      flag = false; // hot fix
       eval('imageUrl = this.vehicle.url' + j)
       if (imageUrl == "") {
         flag = false;
@@ -53,7 +55,7 @@ export class VehicleDetailComponent implements OnInit {
       }
     }
     return imageUrls
-    // for (let i = 1; i < 4; i++) {
+    // for (let i = 1; i <this.vehicle.image_count; i++) {
     //   let imageUrl;
     //   eval('imageUrl = this.vehicle.url' + i)
     //   console.log('imageUrl = this.vehicle.url' + i)

@@ -2,7 +2,7 @@
     style="background-image: url(../../assets/3521_1-799x532.jpg);">
     <div class="container heading">
         <div class="row ">
-            <h1>Lorem Ipsum</h1>
+            <h1>Lorem Ipsum <fa-icon [icon]="faCoffee"></fa-icon></h1>
         </div>
         <div class="row" style="text-align: left;">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
@@ -12,5 +12,8 @@
         </div>
     </div>
 </header>
+
+<button (click)="onClickMe()">Click me!</button>
+{{clickMessage}}
 
 <!-- <app-vehicle-list></app-vehicle-list> -->

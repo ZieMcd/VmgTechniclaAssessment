@@ -16,6 +16,7 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { VehicleCardComponent } from './vehicles/vehicle-card/vehicle-card.component';
 import { SharedModule } from './_modules/shared.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -37,7 +38,8 @@ import { SharedModule } from './_modules/shared.module';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    FontAwesomeModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}

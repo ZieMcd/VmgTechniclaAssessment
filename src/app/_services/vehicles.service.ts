@@ -12,11 +12,13 @@ export class VehiclesService {
 
   constructor(private http: HttpClient) { }
 
-  getVehicles()  {
-    return this.http.get<Vehicle[]>(this.baseUrl + '&order=make.asc');
+  getVehicles(page: number = 0, itemsPerPage: number = 12, sortBy: string = 'make', ascORdesc: string = 'asc') {
+
+    return this.http.get<Vehicle[]>(this.baseUrl + '&order=' + sortBy + '.' +ascORdesc + '&limit=' + itemsPerPage + '&offset=' + (page * itemsPerPage));
+    //+sortby+ascORdec+
   }
 
-  getVehicle(stock_id : string) {
+  getVehicle(stock_id: string) {
     return this.http.get<Vehicle>(this.baseUrl + '&stock_id=eq.' + stock_id);
   }
 }

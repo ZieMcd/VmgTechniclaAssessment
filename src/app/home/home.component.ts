@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -7,15 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  faCoffee = faCoffee;
+  clickMessage = '';
 
   constructor() { }
 
-  ngOnInit(): void {
-    
+  onClickMe() {
+    this.clickMessage = 'You are my hero!';
   }
-
-  // showSuccess() {
-  //   this.toastr.success('Hello world!', 'Toastr fun!');
-  // }
+  
+  ngOnInit(): void {   
+  }
 
 }
