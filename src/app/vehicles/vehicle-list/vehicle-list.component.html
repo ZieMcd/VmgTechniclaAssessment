@@ -1,29 +1,32 @@
 <div class="container">
-       <div class="row">
-              <!-- <button (click)="loadVehicles()"></button> -->
+
+       <div class="d-flex justify-content-left">
+              <!-- <pre class="card card-block card-header">{{vehicleParams.ascORdesc| json}}</pre> -->
               <div class="btn-group float-right">
-                     <button class="btn btn-primary" [(ngModel)]="sortBy" btnRadio="year" tabindex="0" role="button"
+                     <button class="btn btn-primary" [(ngModel)]="vehicleParams.sortBy" btnRadio="year" tabindex="0" role="button"
                             (click)="loadVehicles()">
                             Year
                      </button>
 
-                     <button class="btn btn-primary" [(ngModel)]="sortBy" btnRadio="selling_price" tabindex="0" role="button"
+                     <button class="btn btn-primary" [(ngModel)]="vehicleParams.sortBy" btnRadio="selling_price" tabindex="0" role="button"
                             (click)="loadVehicles()">
                             Selling Price
                      </button>
 
-                     <button class="btn btn-primary" [(ngModel)]="sortBy" btnRadio="mileage" tabindex="0" role="button"
+                     <button class="btn btn-primary" [(ngModel)]="vehicleParams.sortBy" btnRadio="mileage" tabindex="0" role="button"
                             (click)="loadVehicles()">
                             Mileage
                      </button>
 
-                     <button type="button" class="btn btn-primary" [(ngModel)]="asrORdescNum" btnCheckbox
-                            btnCheckboxTrue=1 btnCheckboxFalse=2
-                            (click)="loadVehicles()">
-                            <fa-icon [icon]="sortIconList[asrORdescNum]"></fa-icon>
+                     <button type="button" class="btn btn-primary" [(ngModel)]="vehicleParams.ascORdesc" btnCheckbox
+                            btnCheckboxTrue=asc btnCheckboxFalse=desc
+                            (click)="loadVehicles(); changeSortIcon();">
+                            
+                            <fa-icon [icon]="sortIcon"></fa-icon> 
                      </button>
               </div>
        </div>
+       
        <div class="row">
               <div *ngFor="let vehicle of vehicles" class="col-4">
                      <app-vehicle-card [vehicle]="vehicle"></app-vehicle-card>
@@ -31,7 +34,7 @@
        </div>
 </div>
 <div class="d-flex justify-content-center">
-       <pagination [boundaryLinks]="true" [totalItems]="39" [itemsPerPage]="10" [(ngModel)]="currentPage"
+       <pagination [boundaryLinks]="true" [totalItems]="39" [itemsPerPage]="vehicleParams.itemsPerPage" [(ngModel)]="vehicleParams.currentPage"
               (pageChanged)="pageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
               lastText="&raquo;">
        </pagination>

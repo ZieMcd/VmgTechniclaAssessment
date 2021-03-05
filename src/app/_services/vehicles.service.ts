@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { VehicleParams } from '../_models/userVehicleParams';
 import { Vehicle } from '../_models/vehicle';
 
 @Injectable({
@@ -10,11 +11,11 @@ import { Vehicle } from '../_models/vehicle';
 export class VehiclesService {
   baseUrl = environment.apiUrl;
 
+
   constructor(private http: HttpClient) { }
 
-  getVehicles(page: number = 0, itemsPerPage: number = 12, sortBy: string = 'make', ascORdesc: string = 'asc') {
-
-    return this.http.get<Vehicle[]>(this.baseUrl + '&order=' + sortBy + '.' +ascORdesc + '&limit=' + itemsPerPage + '&offset=' + (page * itemsPerPage));
+  getVehicles(vehicleParams: VehicleParams) {
+    return this.http.get<Vehicle[]>(this.baseUrl + '&order=' + vehicleParams.sortBy + '.' + vehicleParams.ascORdesc + '&limit=' + vehicleParams.itemsPerPage + '&offset=' + (vehicleParams.currentPage * vehicleParams.itemsPerPage));
     //+sortby+ascORdec+
   }
 

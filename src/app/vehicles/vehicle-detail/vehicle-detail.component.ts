@@ -38,10 +38,10 @@ export class VehicleDetailComponent implements OnInit {
     let flag = true;
     let j = 1;
 
-    while (flag) { //for some vehicles this loop never ends
+    while (flag) { 
       let imageUrl = "";
-      flag = false; // hot fix
       eval('imageUrl = this.vehicle.url' + j)
+      console.log(imageUrl);
       if (imageUrl == "") {
         flag = false;
       } else {
@@ -52,6 +52,9 @@ export class VehicleDetailComponent implements OnInit {
             big: imageUrl
           })
           j++;
+          if (j == 20) {
+            flag = false;
+          }
       }
     }
     return imageUrls

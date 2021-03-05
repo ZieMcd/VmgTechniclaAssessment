@@ -1,28 +1,41 @@
 <div class="card mb-4">
     <div class="card-img-wrapper">
-        <img src="{{vehicle.url1 || './assets/car missing.png'}} " alt="car photo" class="card-img-top vehicle-img" >
+        <img src="{{vehicle.url1 || './assets/car missing.png'}} " alt="car photo" class="card-img-top vehicle-img">
     </div>
     <div class="card-header">
         <b>{{vehicle.make}}</b> {{vehicle.variant}}
     </div>
     <div class="card-body p-1">
-         <div class="container">
-             <div class="row">
-                 <div class="col-6">YEAR:   {{vehicle.year}}</div>
-                 <div class="col-6">MILEAGE:    {{vehicle.mileage}}Km</div>
-                 <div class="col-6">CONDITION: {{vehicle.condition}}</div>
-                 <div class="col-6">COLOUR: {{vehicle.colour}}</div>
-             </div>
-         </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-6"><b>YEAR:</b></div>
+                <div class="col-6"><b>MILEAGE:</b></div>
+            </div>
+            <div class="row">
+                <div class="col-6">{{vehicle.year}}</div>
+                <div class="col-6">{{vehicle.mileage}}Km</div>
+            </div>
+            <div class="row">
+                <div class="col-6"><b>CONDITION:</b></div>
+                <div class="col-6"><b>COLOUR:</b></div>
+            </div>
+            <div class="row">
+                
+                <div class="col-6">{{vehicle.condition}}</div>
+                <div class="col-6">{{vehicle.colour}}</div>
+            </div>
+
+        </div>
     </div>
     <div class="card-footer">
         <div class="row">
             <div class="col" style="margin:auto">
                 R{{vehicle.selling_price}}
-            </div>  
-            <div class="col" style="text-align: end;"><a routerLink='/showroom/{{vehicle.stock_id}}' class="btn btn-primary">View details</a></div>
+            </div>
+            <div class="col" style="text-align: end;"><a routerLink='/showroom/{{vehicle.stock_id}}'
+                    class="btn btn-primary">View details</a></div>
         </div>
-        
+
     </div>
-    
+
 </div>

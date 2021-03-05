@@ -1,7 +1,15 @@
 export class VehicleParams {
-    currentPage: 0;
-    itemsPerPage: 12;
+    currentPage: number;
+    itemsPerPage: number;
 
-    sortBy: "make";
-    ascORdesc: "asc"
+    sortBy: string;
+    ascORdesc: string;
+
+    constructor() {
+        this.currentPage = 0;
+        this.itemsPerPage = 6;
+
+        this.sortBy = "make";
+        this.ascORdesc = "asc";
+    }
 }
