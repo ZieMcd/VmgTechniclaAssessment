@@ -1,32 +1,109 @@
 <div class="container">
-
-       <div class="d-flex justify-content-left">
-              <!-- <pre class="card card-block card-header">{{vehicleParams.ascORdesc| json}}</pre> -->
-              <div class="btn-group float-right">
-                     <button class="btn btn-primary" [(ngModel)]="vehicleParams.sortBy" btnRadio="year" tabindex="0" role="button"
-                            (click)="loadVehicles()">
+       <div class="row mb-3">
+              <div class="col">
+                     <!-- <pre class="card card-block card-header">{{vehicleParams.ascORdesc| json}}</pre> -->
+                     <button class="btn btn-primary" [(ngModel)]="vehicleParams.sortBy" btnRadio="year" tabindex="0"
+                            role="button" (click)="loadVehicles()">
                             Year
                      </button>
 
-                     <button class="btn btn-primary" [(ngModel)]="vehicleParams.sortBy" btnRadio="selling_price" tabindex="0" role="button"
-                            (click)="loadVehicles()">
+                     <button class="btn btn-primary" [(ngModel)]="vehicleParams.sortBy" btnRadio="selling_price"
+                            tabindex="0" role="button" (click)="loadVehicles()">
                             Selling Price
                      </button>
 
-                     <button class="btn btn-primary" [(ngModel)]="vehicleParams.sortBy" btnRadio="mileage" tabindex="0" role="button"
-                            (click)="loadVehicles()">
+                     <button class="btn btn-primary" [(ngModel)]="vehicleParams.sortBy" btnRadio="mileage" tabindex="0"
+                            role="button" (click)="loadVehicles()">
                             Mileage
                      </button>
 
                      <button type="button" class="btn btn-primary" [(ngModel)]="vehicleParams.ascORdesc" btnCheckbox
-                            btnCheckboxTrue=asc btnCheckboxFalse=desc
-                            (click)="loadVehicles(); changeSortIcon();">
-                            
-                            <fa-icon [icon]="sortIcon"></fa-icon> 
+                            btnCheckboxTrue=asc btnCheckboxFalse=desc (click)="loadVehicles(); changeSortIcon();">
+
+                            <fa-icon [icon]="sortIcon"></fa-icon>
+                     </button>
+              </div>
+              <div class="col d-flex justify-content-end">
+                     <button type="button " class="btn btn-primary" (click)="isCollapsed = !isCollapsed"
+                            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">Add Filters
                      </button>
               </div>
        </div>
-       
+
+       <div class="container">
+              <form #form="ngForm" (ngSubmit)="loadVehicles()" class="fliters" autocomplete="off" id="isCollapsed"
+                     [collapse]="isCollapsed" [isAnimated]="true">
+                     <div class="container">
+                            <div class="row">
+                                   <div class="col-4">
+                                          Price
+                                   </div>
+                                   <div class="col">
+                                          <div class="form-inline mb-3">
+                                                 <div class="form-group">
+                                                        <label>Min </label>
+                                                        <input type="number" class="form-control ml-1"
+                                                               name="sellingPriceMin"
+                                                               [(ngModel)]="this.vehicleParams.sellingPriceMin">
+                                                 </div>
+
+                                                 <div class="form-group ml-4">
+                                                        <label>Max </label>
+                                                        <input type="number" class="form-control ml-1"
+                                                               name="sellPriceMax"
+                                                               [(ngModel)]="this.vehicleParams.sellingPriceMax">
+                                                 </div>
+                                          </div>
+                                   </div>
+                            </div>
+                            <div class="row ">
+                                   <div class="col-4">
+                                          Year
+                                   </div>
+                                   <div class="col">
+                                          <div class="form-inline mb-3">
+                                                 <div class="form-group">
+                                                        <label>Min </label>
+                                                        <input type="number" class="form-control ml-1" name="yearMin"
+                                                               [(ngModel)]="this.vehicleParams.yearMin">
+                                                 </div>
+
+                                                 <div class="form-group ml-4">
+                                                        <label>Max</label>
+                                                        <input type="number" class="form-control ml-1" name="yearMax"
+                                                               [(ngModel)]="this.vehicleParams.yearMax">
+                                                 </div>
+                                          </div>
+                                   </div>
+                            </div>
+                            <div class="row ">
+                                   <div class="col-4">
+                                          Mileage
+                                   </div>
+                                   <div class="col">
+                                          <div class="form-inline mb-3">
+                                                 <div class="form-group">
+                                                        <label>Min</label>
+                                                        <input type="number" class="form-control ml-1"
+                                                               name="milleageMin"
+                                                               [(ngModel)]="this.vehicleParams.mileageMin">Km
+                                                 </div>
+
+                                                 <div class="form-group ml-3">
+                                                        <label>Max</label>
+                                                        <input type="number" class="form-control ml-1"
+                                                               name="milleageMax"
+                                                               [(ngModel)]="this.vehicleParams.mileageMax">Km
+                                                 </div>
+                                          </div>
+                                   </div>
+                            </div>
+                            <div class="row ">
+                                   <button class="btn btn-primary ml-1 " type="submit"> Apply Filters</button>
+                            </div>
+                     </div>
+              </form>
+       </div>
        <div class="row">
               <div *ngFor="let vehicle of vehicles" class="col-4">
                      <app-vehicle-card [vehicle]="vehicle"></app-vehicle-card>
@@ -34,8 +111,8 @@
        </div>
 </div>
 <div class="d-flex justify-content-center">
-       <pagination [boundaryLinks]="true" [totalItems]="39" [itemsPerPage]="vehicleParams.itemsPerPage" [(ngModel)]="vehicleParams.currentPage"
-              (pageChanged)="pageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
-              lastText="&raquo;">
+       <pagination [boundaryLinks]="true" [totalItems]="48" [itemsPerPage]="vehicleParams.itemsPerPage"
+              [(ngModel)]="vehicleParams.currentPage" (pageChanged)="pageChanged($event)" previousText="&lsaquo;"
+              nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
        </pagination>
 </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faSort, faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons';
-import { VehicleParams } from 'src/app/_models/userVehicleParams';
+import { VehicleParams } from 'src/app/_models/VehicleParams';
 import { Vehicle } from 'src/app/_models/vehicle';
 import { VehiclesService } from 'src/app/_services/vehicles.service';
 
@@ -14,7 +14,7 @@ export class VehicleListComponent implements OnInit {
   vehicleParams: VehicleParams;
   sortIcon = faSort;
   asrORdesc = ['asc','asc','desc']
-  
+  isCollapsed = true;
   
 
   constructor(private vehicleService: VehiclesService) { }
@@ -22,12 +22,12 @@ export class VehicleListComponent implements OnInit {
   ngOnInit(): void {
     this.vehicleParams = new VehicleParams();
     this.loadVehicles();
+    console.log(this.vehicleParams.yearMax);
   }
 
   loadVehicles() {
     this.vehicleService.getVehicles(this.vehicleParams).subscribe(vehicles => {
       this.vehicles = vehicles;
-      console.log(this.vehicles.length);
     })
   }
 
@@ -44,4 +44,7 @@ export class VehicleListComponent implements OnInit {
     }
   }
 
+  logthing() {
+    console.log(this.vehicleParams.yearMin)
+  }
 }

@@ -7,6 +7,7 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 @NgModule({
   declarations: [],
@@ -21,7 +22,9 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
     ButtonsModule.forRoot(),
     FormsModule,
     FontAwesomeModule,
-    PaginationModule.forRoot()
+    PaginationModule.forRoot(),
+    CollapseModule.forRoot()
+
   ],
   exports: [
     ToastrModule,
@@ -30,7 +33,8 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
     ButtonsModule,
     FormsModule,
     FontAwesomeModule,
-    PaginationModule
+    PaginationModule,
+    CollapseModule
   ]
 })
 export class SharedModule { }

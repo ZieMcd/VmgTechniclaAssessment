@@ -12,11 +12,7 @@ export class HomeComponent implements OnInit {
   clickMessage = '';
 
   constructor() { }
-
-  onClickMe() {
-    this.clickMessage = 'You are my hero!';
-  }
-  
+    
   ngOnInit(): void {   
   }
 
