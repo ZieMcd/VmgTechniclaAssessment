@@ -20,12 +20,12 @@ export class VehiclesService {
       .set('order', vehicleParams.sortBy + "." +vehicleParams.ascORdesc)
       .set('limit',vehicleParams.itemsPerPage.toString())
       .set('offset', ((vehicleParams.currentPage-1) * vehicleParams.itemsPerPage).toString())
-      .set('year','gt.'+vehicleParams.yearMin.toString())
-      .set('year','lt.'+vehicleParams.yearMax.toString())
-      .set('mileage','gt.'+vehicleParams.mileageMin.toString())
-      .set('mileage','lt.'+vehicleParams.mileageMax.toString())
-      .set('selling_price','gt.'+vehicleParams.sellingPriceMin.toString())
-      .set('selling_price', "lt."+vehicleParams.sellingPriceMax.toString() )
+      .append('year','gt.'+vehicleParams.yearMin.toString())
+      .append('year','lt.'+vehicleParams.yearMax.toString())
+      .append('mileage','gt.'+vehicleParams.mileageMin.toString())
+      .append('mileage','lt.'+vehicleParams.mileageMax.toString())
+      .append('selling_price','gt.'+vehicleParams.sellingPriceMin.toString())
+      .append('selling_price','lt.'+vehicleParams.sellingPriceMax.toString())
       
     return this.http.get<Vehicle[]>(this.baseUrl,{params});
     //+sortby+ascORdec+
@@ -33,5 +33,20 @@ export class VehiclesService {
 
   getVehicle(stock_id: string) {
     return this.http.get<Vehicle>(this.baseUrl + '&stock_id=eq.' + stock_id);
+  }
+
+  //I need this method so that I can get the total number of vehicles for pagination,
+  //I would really like feed back on this. I'm pretty sure this method defeats is pretty inefficient
+  //I tried to make the getVehicles efficient thus I put a limit on it.
+  getVehiclesNoLimit(vehicleParams: VehicleParams){
+    const params = new HttpParams()
+    .append('year','gt.'+vehicleParams.yearMin.toString())
+    .append('year','lt.'+vehicleParams.yearMax.toString())
+    .append('mileage','gt.'+vehicleParams.mileageMin.toString())
+    .append('mileage','lt.'+vehicleParams.mileageMax.toString())
+    .append('selling_price','gt.'+vehicleParams.sellingPriceMin.toString())
+    .append('selling_price','lt.'+vehicleParams.sellingPriceMax.toString())
+
+    return this.http.get<Vehicle[]>(this.baseUrl,{params});
   }
 }

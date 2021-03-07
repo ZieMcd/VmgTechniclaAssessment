@@ -15,6 +15,7 @@ export class VehicleListComponent implements OnInit {
   sortIcon = faSort;
   asrORdesc = ['asc','asc','desc']
   isCollapsed = true;
+  numberOfItems;
   
 
   constructor(private vehicleService: VehiclesService) { }
@@ -22,13 +23,18 @@ export class VehicleListComponent implements OnInit {
   ngOnInit(): void {
     this.vehicleParams = new VehicleParams();
     this.loadVehicles();
-    console.log(this.vehicleParams.yearMax);
   }
 
   loadVehicles() {
     this.vehicleService.getVehicles(this.vehicleParams).subscribe(vehicles => {
       this.vehicles = vehicles;
     })
+    
+    this.vehicleService.getVehiclesNoLimit(this.vehicleParams).subscribe( t => {
+      this.numberOfItems = t.length;
+    }
+    )
+    
   }
 
   pageChanged(event: any) {
@@ -44,7 +50,8 @@ export class VehicleListComponent implements OnInit {
     }
   }
 
-  logthing() {
-    console.log(this.vehicleParams.yearMin)
+  resetFilters(){
+    this.vehicleParams = new VehicleParams();
   }
+ 
 }

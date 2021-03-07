@@ -16,7 +16,7 @@ export class VehicleDetailComponent implements OnInit {
 
   constructor(private vehicleService: VehiclesService, private route: ActivatedRoute) { }
 
- 
+
 
   ngOnInit(): void {
     this.loadMember();
@@ -30,7 +30,7 @@ export class VehicleDetailComponent implements OnInit {
         preview: false
       }
     ]
-    
+
   }
 
   getImages(): NgxGalleryImage[] {
@@ -38,10 +38,10 @@ export class VehicleDetailComponent implements OnInit {
     let flag = true;
     let j = 1;
 
-    while (flag) { 
+    while (flag) {
       let imageUrl = "";
       eval('imageUrl = this.vehicle.url' + j)
-      console.log(imageUrl);
+    
       if (imageUrl == "") {
         flag = false;
       } else {
@@ -51,10 +51,12 @@ export class VehicleDetailComponent implements OnInit {
             medium: imageUrl,
             big: imageUrl
           })
-          j++;
-          if (j == 20) {
-            flag = false;
-          }
+        j++;
+
+        if (j == 20) {
+          flag = false;
+        }
+        
       }
     }
     return imageUrls
@@ -69,7 +71,7 @@ export class VehicleDetailComponent implements OnInit {
     //       big: imageUrl
     //     }
     //   )
-      
+
   }
   loadMember() {
     this.vehicleService.getVehicle(this.route.snapshot.paramMap.get("id")).subscribe(vehicle => {
