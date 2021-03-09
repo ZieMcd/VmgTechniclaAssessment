@@ -26,8 +26,8 @@ export class VehicleParams {
         this.yearMin = 2000;
         this.yearMax = new Date().getFullYear();
 
-        this.sellingPriceMin = 10000;
-        this.sellingPriceMax = 99999999;
+        this.sellingPriceMin = 129500;
+        this.sellingPriceMax = 1999500;
 
         this.mileageMin = 0;
         this.mileageMax = 9999999;

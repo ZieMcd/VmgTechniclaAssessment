@@ -7,6 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
+
 
 
 @NgModule({
@@ -19,8 +21,8 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
     FormsModule,
     FontAwesomeModule,
     PaginationModule.forRoot(),
-    CollapseModule.forRoot()
-
+    CollapseModule.forRoot(),
+    NgxSliderModule,
   ],
   exports: [
     TabsModule,
@@ -29,7 +31,8 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
     FormsModule,
     FontAwesomeModule,
     PaginationModule,
-    CollapseModule
+    CollapseModule,
+    NgxSliderModule,
   ]
 })
 export class SharedModule { }

@@ -21,9 +21,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +31,8 @@ import { ToastrModule } from 'ngx-toastr';
     AboutComponent,
     NotFoundComponent,
     ServerErrorComponent,
-    VehicleCardComponent
+    VehicleCardComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -46,6 +44,7 @@ import { ToastrModule } from 'ngx-toastr';
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     }),
+
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}

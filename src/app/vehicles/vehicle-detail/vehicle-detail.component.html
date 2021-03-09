@@ -1,5 +1,5 @@
 <section *ngIf="vehicle">
-    <div class="container pt-1">
+    <div class="container pc pt-1">
         <div class="row">
             <div class="col-4">
                 <div class="card">
@@ -26,10 +26,7 @@
                             <div class="col-2"> <b> Colour:</b></div>
                             <div class="col-2">{{vehicle.colour}}</div>
                         </div>
-                        <div class="row">
-                            <div class="col-2"> <b> Year:</b></div>
-                            <div class="col-2">{{vehicle.year}}</div>
-                        </div>
+                       
                         <br>
                         <h5>Price</h5>
                         R {{vehicle.selling_price}}
@@ -52,5 +49,31 @@
             <button class="btn btn-primary" routerLink='/showroom'> <b>Back to ShowRoom</b> </button>
         </div>
 
+    </div>
+
+    <div class="container mobile">
+        <div class="card">
+            <img class="card-img-top" src="{{vehicle.url1 || './assets/car missing.png'}}" alt="vehicle picture">
+            <div class="card-body">
+                <h4 class="card-title">
+                    {{vehicle.make}}
+                </h4>
+                <h6 class="card-subtitle mb-3 text-muted">
+                    {{vehicle.variant}} 
+                </h6>
+                <h4 class="card-title ">
+                    R{{vehicle.selling_price}}
+                </h4>
+                <h5 class="card-title"> Basic Info</h5>
+                <p class="card-text text-muted">
+                   <b>Year:</b> {{vehicle.year}} <br>
+                   <b>Mileage:</b> {{vehicle.mileage}} Km <br>
+                   <b>Colour:</b> {{vehicle.colour}}
+                </p>
+                <h5 class="card-title">Description</h5>
+                <p class="card-text text-muted">{{vehicle.description}}</p>
+            </div>
+            <button type="button" class="btn btn-primary btn-lg btn-block" routerLink='/showroom'> Back To ShowRoom</button>
+        </div>
     </div>
 </section>
