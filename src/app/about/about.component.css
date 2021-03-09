@@ -1,0 +1,15 @@
+@media (max-width: 775px) {
+    .pc {
+    display: none;
+    }
+    .car-img{
+        border-radius: 10px;
+    }
+}
+
+@media (min-width: 775px) {
+    .mobile {
+        display: none;
+    }
+    
+}
